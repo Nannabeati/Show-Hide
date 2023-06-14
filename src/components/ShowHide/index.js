@@ -14,27 +14,30 @@ class ShowHide extends Component {
     this.setState(prevState => ({lastName: !prevState.lastName}))
   }
 
-  render() {
+  displayNames = () => {
     const {firstName} = this.state
-    let displayFirstName
-    let displayLastName
+
     if (firstName === true) {
-      displayFirstName = (
+      return (
         <div className="names-container">
           <div className="button-content-container">
             <h1 className="heading">Joe</h1>
           </div>
         </div>
       )
-    } else {
-      displayLastName = (
-        <div className="names-container">
-          <div className="button-content-container">
-            <h1 className="heading">Jonas</h1>
-          </div>
-        </div>
-      )
     }
+    return (
+      <div className="names-container">
+        <div className="button-content-container">
+          <h1 className="heading">Jonas</h1>
+        </div>
+      </div>
+    )
+  }
+}
+
+  render(){
+
     return (
       <div className="backgroundContainer">
         <h1 className="heading-title">Show/Hide</h1>
@@ -47,7 +50,7 @@ class ShowHide extends Component {
             >
               Show/HideFirstName
             </button>
-            {displayFirstName}
+            {this.displayNames}
           </div>
           <div>
             <button
@@ -57,12 +60,12 @@ class ShowHide extends Component {
             >
               Show/HideLastName
             </button>
-            {displayLastName}
+            {this.displayNames}
           </div>
         </div>
       </div>
     )
-  }
+ }
 }
 
 export default ShowHide
